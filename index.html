@@ -51,31 +51,55 @@
       color: #6a1b9a;
       text-align: center;
       font-size: 1.8em;
-      margin-bottom: 0;
+      margin-bottom: 10px;
     }
 
     .design h4 {
       text-align: center;
       color: #1e88e5;
-      margin-top: 5px;
+      margin-top: 0;
+    }
+
+    .form-toggle {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .form-toggle button {
+      background-color: #0288d1;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .form-toggle button:hover {
+      background-color: #0277bd;
     }
 
     form {
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: 10px;
       margin-top: 20px;
     }
 
-    input, select, textarea {
+    form.show {
+      display: flex;
+    }
+
+    input, textarea {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1em;
     }
 
-    button {
-      background-color: #0288d1;
+    button[type="submit"] {
+      background-color: #388e3c;
       color: white;
       padding: 10px;
       border: none;
@@ -84,8 +108,8 @@
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #0277bd;
+    button[type="submit"]:hover {
+      background-color: #2e7d32;
     }
 
     footer {
@@ -110,19 +134,18 @@
   <main>
     <div class="design">
       <h3>Welcome to the Official Committee Page</h3>
-      <h4>Fill up the form below to register</h4>
+      <h4>Click below to Register</h4>
 
-      <form>
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="text" name="team" placeholder="Team Name" required />
-        <input type="number" name="mobile" placeholder="Mobile Number" required />
-        <select name="role">
-          <option value="">Select Role</option>
-          <option value="player">Player</option>
-          <option value="captain">Captain</option>
-          <option value="manager">Manager</option>
-        </select>
-        <textarea name="comments" placeholder="Any comments" rows="3"></textarea>
+      <div class="form-toggle">
+        <button onclick="toggleForm()">Registration</button>
+      </div>
+
+      <form id="registrationForm">
+        <input type="text" name="player_name" placeholder="Player Name" required />
+        <input type="text" name="category" placeholder="Category" required />
+        <input type="number" name="age" placeholder="Player Age" required />
+        <input type="text" name="address" placeholder="Address" required />
+        <input type="text" name="contact" placeholder="Contact Number" required />
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -133,5 +156,12 @@
     <p>Rizwanal Haque Mehedi</p>
     <p>Foyshal Imran Sabbir</p>
   </footer>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('registrationForm');
+      form.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
