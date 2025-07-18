@@ -8,37 +8,29 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-    }
-
-    .logo-container {
-      text-align: center;
-      background: #fff;
-      padding: 20px;
-    }
-
-    .logo-container img {
-      width: 200px;
-      max-width: 80%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f9f9f9, #e6f7ff);
     }
 
     header {
-      background: #000;
+      background: #1a1a1a;
       color: #fff;
       text-align: center;
-      padding: 10px;
+      padding: 20px 10px;
     }
 
     header h1 {
       margin: 5px 0;
-      font-size: 30px;
+      font-size: 40px;
+      color: #ffcc00;
+      text-shadow: 2px 2px #000;
     }
 
     header h2 {
       margin: 5px 0;
       font-size: 20px;
-      font-weight: normal;
+      font-weight: bold;
+      color: #00e6e6;
     }
 
     .container {
@@ -47,13 +39,14 @@
     }
 
     .register-btn {
-      background: red;
+      background: #ff3300;
       color: white;
       padding: 12px 24px;
-      font-size: 18px;
+      font-size: 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .form-container {
@@ -61,9 +54,9 @@
       max-width: 600px;
       margin: 20px auto;
       padding: 20px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      border-radius: 10px;
     }
 
     .form-group {
@@ -74,44 +67,46 @@
     .form-group label {
       display: block;
       font-weight: bold;
+      color: #003366;
     }
 
-    .form-group input,
-    .form-group select {
+    .form-group input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
-    .photo-upload {
+    .submit-btn {
+      background: #0066ff;
+      color: white;
+      padding: 10px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
       margin-top: 10px;
-      text-align: right;
-    }
-
-    .photo-upload input {
-      width: auto;
     }
 
     footer {
       text-align: center;
-      margin: 30px 0 10px;
-      color: #555;
-      font-size: 14px;
+      margin: 40px 0 20px;
+      color: #444;
+      font-size: 15px;
     }
 
     footer h3 {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      color: #cc0000;
+    }
+
+    footer p {
+      margin: 4px 0;
     }
   </style>
 </head>
 <body>
-
-  <!-- Cricket Logo -->
-  <div class="logo-container">
-    <img src="https://i.ibb.co/3mfLVWY/cricket-logo.png" alt="Cricket Logo">
-  </div>
 
   <!-- Header -->
   <header>
@@ -124,40 +119,38 @@
     <button class="register-btn" onclick="toggleForm()">Register Now</button>
 
     <!-- Registration Form -->
-    <div class="form-container" id="registrationForm">
+    <form class="form-container" id="registrationForm" onsubmit="submitForm(event)">
       <div class="form-group">
         <label>Player Name:</label>
-        <input type="text" placeholder="Enter Player Name">
+        <input type="text" name="player_name" required>
       </div>
       <div class="form-group">
         <label>Father's Name:</label>
-        <input type="text" placeholder="Enter Father's Name">
+        <input type="text" name="father_name" required>
       </div>
       <div class="form-group">
         <label>Category:</label>
-        <input type="text" placeholder="e.g., Under 16 / Open">
+        <input type="text" name="category" required>
       </div>
       <div class="form-group">
         <label>Player Age:</label>
-        <input type="number" placeholder="Enter Age">
+        <input type="number" name="player_age" required>
       </div>
       <div class="form-group">
         <label>Present Address:</label>
-        <input type="text" placeholder="Enter Present Address">
+        <input type="text" name="present_address" required>
       </div>
       <div class="form-group">
         <label>Permanent Address:</label>
-        <input type="text" placeholder="Enter Permanent Address">
+        <input type="text" name="permanent_address" required>
       </div>
       <div class="form-group">
         <label>Contact Number:</label>
-        <input type="tel" placeholder="Enter Phone Number">
+        <input type="tel" name="contact_number" required>
       </div>
-      <div class="photo-upload">
-        <label>Upload Photo:</label>
-        <input type="file" accept="image/*">
-      </div>
-    </div>
+
+      <button class="submit-btn" type="submit">Submit</button>
+    </form>
   </div>
 
   <!-- Footer -->
@@ -167,11 +160,16 @@
     <p>Bangladesh</p>
   </footer>
 
-  <!-- Script to show/hide form -->
   <script>
     function toggleForm() {
       const form = document.getElementById('registrationForm');
       form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Your form has been submitted! ✅\nOur team will contact you soon via Telegram: @Realcashapperan");
+      document.getElementById("registrationForm").reset();
     }
   </script>
 
